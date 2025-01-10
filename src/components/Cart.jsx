@@ -13,10 +13,12 @@ function Cart() {
     ({ restaurantName }) => restaurantName
   );
   const totalCost = data.items.reduce(
-    (acc, item) => acc + (item.price || item.defaultPrice / 100) * item.count,
+    (acc, item) =>
+      acc + (item.price / 100 || item.defaultPrice / 100) * item.count,
     0
   );
   const G = (totalCost / 100) * 8;
+  console.log(totalCost)
 
   if (data.items.length === 0)
     return (
